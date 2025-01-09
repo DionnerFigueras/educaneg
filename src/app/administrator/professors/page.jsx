@@ -102,6 +102,9 @@ function professors() {
         fontWeight: "bold",
         fontSize: "18px",
         textAlign: "center",
+        '@media (max-width: 640px)': {
+          fontSize: '16px',
+        },
       },
     },
     cells: {
@@ -109,6 +112,9 @@ function professors() {
         fontWeight: "500",
         fontSize: "16px",
         textAlign: "center",
+        '@media (max-width: 640px)': {
+          fontSize: '14px',
+        },
       },
     },
   };
@@ -136,7 +142,7 @@ function professors() {
       <Sidebar role="administrator"  items={items} />
     
       <div className="w-full m-8">
-        <h1 className="text-3xl font-bold mb-4">Listado de Profesores </h1>
+        <h1 className="text-center text-2xl md:text-3xl font-bold mb-4">Listado de Profesores </h1>
         <Table
           columns={columns}
           data={data}

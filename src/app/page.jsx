@@ -4,14 +4,14 @@ import Subject from "@/components/Subject";
 
 export default function Home() {
   return (
-    <div className="h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-white-100">
       <header>
         <Navbar />
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center">
         {/* Imagen */}
-        <div className="mt-5 mb-10 relative w-4/5 max-w-5xl h-80 rounded-md overflow-hidden shadow-md shadow-gray-500">
+        <div className="mt-5 mb-10 relative w-4/5 max-w-5xl h-80 rounded-md overflow-hidden">
           <div className="absolute inset-0 bg-black opacity-45"></div>
           <div className="bg-[url('/images/Campus.jpg')] bg-cover bg-center bg-no-repeat h-full flex items-center justify-center">
             <div className="text-center">

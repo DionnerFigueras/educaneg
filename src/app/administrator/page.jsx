@@ -23,10 +23,10 @@ export default function Administrator() {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex min-w-full">
       <Sidebar role="Administrador" items={items} />
       
-      <div className="m-8 w-full">
+      <div className="m-4 w-full flex flex-col">
         <h1 className="font-extrabold text-4xl">Dashboard de Admnistradores</h1>
 
         <Card

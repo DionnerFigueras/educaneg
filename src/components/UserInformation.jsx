@@ -11,18 +11,18 @@ const UserInformation = ({ url, name, email, status, isProfessor }) => {
   const nameTextSizeClass = isProfessor ? 'text-xl' : 'text-lg';
   const emailTextSizeClass = isProfessor ? 'text-lg' : 'text-base';
   const textColorClass = isProfessor ? 'text-black' : 'text-white';
-  const maxwitdth = isProfessor ? 'max-w-80' : 'max-w-52';
+  const maxWidth = isProfessor ? 'max-w-80' : 'max-w-52';
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-lg max-w-md">
+    <div className="flex flex-col items-center justify-center rounded-lg max-w-md mx-auto">
       <img
         src={url}
         alt="Profile"
         className={`${imageSizeClass} rounded-full`}
       />
       <div className={`flex flex-col items-center pl-2 ${textColorClass}`}>
-        <h2 className={`${nameTextSizeClass} text-center font-extrabold ${maxwitdth} break-words`}>{name}</h2>
-        <p className={`${emailTextSizeClass} text-center font-semibold ${maxwitdth} break-words`}>{email}</p>
+        <h2 className={`${nameTextSizeClass} text-center font-extrabold ${maxWidth} break-words`}>{name}</h2>
+        <p className={`${emailTextSizeClass} text-center font-semibold ${maxWidth} break-words`}>{email}</p>
         {status && (
           <p className='mt-2 px-4 py-1 bg-black text-white rounded-2xl font-semibold text-base'>
             {status}

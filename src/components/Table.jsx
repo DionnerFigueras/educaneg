@@ -27,23 +27,23 @@ function Table({ columns, data, customStyles, buttontext, placeholder, filterFun
   }
 
   return (
-    <div className="">
-      <div className="flex justify-between items-center flex-wrap gap-5 mb-4">
+    <div className="p-4">
+      <div className="flex flex-col md:flex-row justify-between items-center flex-wrap gap-5 mb-4">
         {/* Input para la busqueda de elementos */}
         <input
           type="text"
-          className="w-80 h-10 p-2 border-2 border-gray-500 rounded-lg shadow-gray-300 shadow-md"
+          className="w-full md:w-80 h-10 p-2 border-2 border-gray-500 rounded-lg shadow-gray-300 shadow-md"
           placeholder={placeholder}
           onChange={handleChange}
         />
         {/* Boton para agregar un nuevo elemento */}
-          <button 
-            className="p-2 h-10 bg-black text-white text-lg font-bold rounded-lg flex items-center justify-center shadow-gray-300 shadow-lg" 
-            onClick={() => {router.push(route)}}
-          >
-            <FontAwesomeIcon icon={faPlus} className="pr-4" />
-            <p>{buttontext}</p>
-          </button>
+        <button 
+          className="mt-2 md:mt-0 p-2 h-10 bg-black text-white text-lg font-bold rounded-lg flex items-center justify-center shadow-gray-300 shadow-lg" 
+          onClick={() => {router.push(route)}}
+        >
+          <FontAwesomeIcon icon={faPlus} className="pr-2" />
+          <p>{buttontext}</p>
+        </button>
       </div>
 
       <DataTable

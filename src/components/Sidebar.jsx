@@ -43,7 +43,7 @@ const Sidebar = ({ role, items }) => {
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
-              <FontAwesomeIcon icon={faXmark} className="w-7 h-7 pb-36 mr-2" />
+              <FontAwesomeIcon icon={faXmark} className="w-7 h-7 pb-36" />
             ) : (
               <FontAwesomeIcon icon={faBars} className="w-7 h-7 pl-2" />
             )}

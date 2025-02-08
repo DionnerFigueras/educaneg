@@ -132,8 +132,8 @@ function Estudents() {
         fontWeight: "bold",
         fontSize: "18px",
         textAlign: "center",
-        '@media (max-width: 640px)': {
-          fontSize: '16px',
+        "@media (max-width: 640px)": {
+          fontSize: "16px",
         },
       },
     },
@@ -142,8 +142,8 @@ function Estudents() {
         fontWeight: "500",
         fontSize: "16px",
         textAlign: "center",
-        '@media (max-width: 640px)': {
-          fontSize: '14px',
+        "@media (max-width: 640px)": {
+          fontSize: "14px",
         },
       },
     },
@@ -176,7 +176,9 @@ function Estudents() {
       <Sidebar role={"Administrador"} items={items} />
 
       <div className="w-full m-8">
-        <h1 className="text-center text-2xl md:text-3xl font-bold mb-4">Listado de Estudiantes </h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center md:text-left">
+          Listado de Estudiantes{" "}
+        </h1>
         <Table
           columns={columns}
           data={data}

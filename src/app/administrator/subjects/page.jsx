@@ -162,7 +162,7 @@ function Subjects() {
     <div className="flex">
       <Sidebar role={"Administrador"} items={items} />
       <div className="w-full m-8">
-        <h1 className="text-center text-2xl md:text-3xl font-bold mb-4">Listado de Materias</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center md:text-left">Listado de Materias</h1>
         <Table
           columns={columns}
           data={data}

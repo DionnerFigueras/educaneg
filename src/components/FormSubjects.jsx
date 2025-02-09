@@ -3,20 +3,20 @@ import React from "react";
 import FormTitle from "@/components/FormTitle";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -29,109 +29,122 @@ import Swal from "sweetalert2";
 Formulario para agregar y editar materias
 */
 
-
-
 const subjectSchema = z.object({
-    nombre: z
-      .string({ required_error: "El nombre de la materia es requerido" })
-      .min(2, {
-        message: "El nombre de la materia debe tener al menos 2 caracteres",
-      })
-      .max(255, {
-        message: "El nombre de la materia no puede tener más de 255 caracteres",
-      }),
-  
-      unidadesCredito: z
-      .string({ required_error: "Las unidades de creditos son requeridas" })
-      .refine((value) => {
-        const parsedValue = parseInt(value, 10);
-        return !isNaN(parsedValue) && parsedValue > 0 && Number.isInteger(parsedValue) && parsedValue <= 5;
-      }, {
-        message: "Las unidades de crédito deben ser un número entero positivo entre 1 y 5.",
-      }),
-  
-    profesor: z
-      .string({ required_error: "El profesor es querido" })
-      .min(2, { message: "El profesor debe tener al menos 2 caracteres" })
-      .max(255, { message: "El profesor no puede tener más de 255 caracteres" })
-      .refine(
-        (value) => value !== "Seleccione un profesor",
-        "Debe seleccionar un profesor",
-        { message: "Por favor seleccione un profesor valido" }
-      ),
-  
-    descripcion: z
-      .string({ required_error: "La descripcion es querida" })
-      .min(2, { message: "La descripcion debe tener al menos 2 caracteres" })
-      .max(255, {
-        message: "La descripcion no puede tener más de 255 caracteres",
-      }),
-  
-    horario: z
-      .string({ required_error: "El horario es querido" })
-      .min(2, { message: "El horario debe tener al menos 2 caracteres" })
-      .max(255, { message: "El horario no puede tener más de 255 caracteres" }),
-  
-    aula: z
-      .string({ required_error: "El aula es querido" })
-      .min(2, { message: "El aula debe tener al menos 2 caracteres" })
-      .max(255, { message: "El aula no puede tener más de 255 caracteres" }),
-  
-    prerrequisitos: z
-      .string({ required_error: "Los prerrequisitos son queridos" })
-      .min(2, { message: "Los prerrequisitos debe tener al menos 2 caracteres" })
-      .max(255, {
-        message: "Los prerrequisitos no puede tener más de 255 caracteres",
-      }),
-  
-    cupos: z
-    .string({ required_error: "Las unidades de creditos son requeridas" })
-    .refine((value) => {
-      const parsedValue = parseInt(value, 10);
-      return !isNaN(parsedValue) && parsedValue > 0 && Number.isInteger(parsedValue);
-    }, {
-      message: "Los cupos de la materia deben ser mayores a 0",
+  nombre: z
+    .string({ required_error: "El nombre de la materia es requerido" })
+    .min(2, {
+      message: "El nombre de la materia debe tener al menos 2 caracteres",
+    })
+    .max(255, {
+      message: "El nombre de la materia no puede tener más de 255 caracteres",
     }),
-  });
 
-function FormSubject({ formTitle,  initialValues = null }) {
+  unidadesCredito: z
+    .string({ required_error: "Las unidades de creditos son requeridas" })
+    .refine(
+      (value) => {
+        const parsedValue = parseInt(value, 10);
+        return (
+          !isNaN(parsedValue) &&
+          parsedValue > 0 &&
+          Number.isInteger(parsedValue) &&
+          parsedValue <= 5
+        );
+      },
+      {
+        message:
+          "Las unidades de crédito deben ser un número entero positivo entre 1 y 5.",
+      }
+    ),
 
+  profesor: z
+    .string({ required_error: "El profesor es querido" })
+    .min(2, { message: "El profesor debe tener al menos 2 caracteres" })
+    .max(255, { message: "El profesor no puede tener más de 255 caracteres" })
+    .refine(
+      (value) => value !== "Seleccione un profesor",
+      "Debe seleccionar un profesor",
+      { message: "Por favor seleccione un profesor valido" }
+    ),
+
+  descripcion: z
+    .string({ required_error: "La descripcion es querida" })
+    .min(2, { message: "La descripcion debe tener al menos 2 caracteres" })
+    .max(255, {
+      message: "La descripcion no puede tener más de 255 caracteres",
+    }),
+
+  horario: z
+    .string({ required_error: "El horario es querido" })
+    .min(2, { message: "El horario debe tener al menos 2 caracteres" })
+    .max(255, { message: "El horario no puede tener más de 255 caracteres" }),
+
+  aula: z
+    .string({ required_error: "El aula es querido" })
+    .min(2, { message: "El aula debe tener al menos 2 caracteres" })
+    .max(255, { message: "El aula no puede tener más de 255 caracteres" }),
+
+  prerrequisitos: z
+    .string({ required_error: "Los prerrequisitos son queridos" })
+    .min(2, { message: "Los prerrequisitos debe tener al menos 2 caracteres" })
+    .max(255, {
+      message: "Los prerrequisitos no puede tener más de 255 caracteres",
+    }),
+
+  cupos: z
+    .string({ required_error: "Las unidades de creditos son requeridas" })
+    .refine(
+      (value) => {
+        const parsedValue = parseInt(value, 10);
+        return (
+          !isNaN(parsedValue) &&
+          parsedValue > 0 &&
+          Number.isInteger(parsedValue)
+        );
+      },
+      {
+        message: "Los cupos de la materia deben ser mayores a 0",
+      }
+    ),
+});
+
+function FormSubject({ formTitle, initialValues = null }) {
   const form = useForm({
     resolver: zodResolver(subjectSchema),
-        defaultValues: {
-        nombre: initialValues?.nombre || "",
-        unidadesCredito: initialValues?.unidadesCredito || "",
-        profesor: initialValues?.profesor || "",
-        descripcion: initialValues?.descripcion || "",
-        horario: initialValues?.horario || "",
-        aula: initialValues?.aula || "",
-        prerrequisitos: initialValues?.prerrequisitos || "",
-        cupos: initialValues?.cupos || "",
-        },
-    });
-
+    defaultValues: {
+      nombre: initialValues?.nombre || "",
+      unidadesCredito: initialValues?.unidadesCredito || "",
+      profesor: initialValues?.profesor || "",
+      descripcion: initialValues?.descripcion || "",
+      horario: initialValues?.horario || "",
+      aula: initialValues?.aula || "",
+      prerrequisitos: initialValues?.prerrequisitos || "",
+      cupos: initialValues?.cupos || "",
+    },
+  });
 
   const onSubmit = form.handleSubmit(async (values) => {
-    try {
-        console.log(values);
+    /* try {
+      console.log(values);
 
-        Swal.fire({
-          icon: 'success',
-          title: initialValues ? 'Materia editada' : 'Materia Creada',
-          text: initialValues ? 'La materia ha sido editada correctamente.' : 'La materia ha sido creada correctamente.',
-          confirmButtonText: 'Ok',
-        });
-        
-      } catch (error) {
-        console.error("Error al enviar el formulario:", error);
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.',
-            confirmButtonText: 'Ok'
-          });
-      }
-    });
+      Swal.fire({
+        icon: "success",
+        title: initialValues ? "Materia editada" : "Materia Creada",
+        text: initialValues
+          ? "La materia ha sido editada correctamente."
+          : "La materia ha sido creada correctamente.",
+        confirmButtonText: "Ok",
+      });
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.",
+        confirmButtonText: "Ok",
+      });
+    } */
+  });
 
   const profesores = [
     "Juan Perez",
@@ -148,6 +161,7 @@ function FormSubject({ formTitle,  initialValues = null }) {
       <FormTitle
         formTitle={formTitle}
         route={"/administrator/subjects"}
+        testid="regresar"
       />
       <Form {...form}>
         <form className="w-10/12 flex flex-col" onSubmit={onSubmit}>
@@ -168,6 +182,7 @@ function FormSubject({ formTitle,  initialValues = null }) {
                         {...field}
                         className="border-2 border-gray-400 rounded-lg h-10"
                         placeholder="Ingrese el nombre de la materia"
+                        data-testid="nombre-materia-input" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.nombre && (
@@ -194,6 +209,7 @@ function FormSubject({ formTitle,  initialValues = null }) {
                         {...field}
                         className="border-2 border-gray-400 rounded-lg h-10"
                         placeholder="Ingrese las unidades de creditos"
+                        data-testid="unidades-credito-input" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.unidadesCredito && (
@@ -217,13 +233,27 @@ function FormSubject({ formTitle,  initialValues = null }) {
                       defaultValue={field.value}
                     >
                       <FormControl className="border-2 border-gray-400 h-10">
-                        <SelectTrigger>
+                        <SelectTrigger data-testid="profesor-select-trigger">
+                          {" "}
+                          {/* Data-testid en SelectTrigger */}
                           <SelectValue placeholder="Seleccione un profesor" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {profesores.map((profesor) => (
-                          <SelectItem key={profesor} value={profesor}>
+                          <SelectItem
+                            key={profesor}
+                            value={profesor}
+                            data-testid={`profesor-option-${profesor
+                              .replace(/\s+/g, "-")
+                              .toLowerCase()}`}
+                            // Agrega esta prop para solucionar problemas de portal
+                            ref={(ref) =>
+                              ref?.addEventListener("click", (e) =>
+                                e.stopPropagation()
+                              )
+                            }
+                          >
                             {profesor}
                           </SelectItem>
                         ))}
@@ -246,6 +276,7 @@ function FormSubject({ formTitle,  initialValues = null }) {
                         {...field}
                         className="p-2 border-2 border-gray-400 rounded-lg h-16 resize-none"
                         placeholder="Ingrese la descripcion de la materia"
+                        data-testid="descripcion-materia-textarea" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.descripcion && (
@@ -263,15 +294,14 @@ function FormSubject({ formTitle,  initialValues = null }) {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="block">
-                      Horario:
-                    </FormLabel>
+                    <FormLabel className="block">Horario:</FormLabel>
                     <FormControl>
                       <Input
                         type="text"
                         {...field}
                         className="border-2 border-gray-400 rounded-lg h-10"
                         placeholder="Ingrese el horario de la materia"
+                        data-testid="horario-materia-input" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.horario && (
@@ -289,15 +319,14 @@ function FormSubject({ formTitle,  initialValues = null }) {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="block">
-                      Aula:
-                    </FormLabel>
+                    <FormLabel className="block">Aula:</FormLabel>
                     <FormControl>
                       <Input
                         type="text"
                         {...field}
                         className="border-2 border-gray-400 rounded-lg h-10"
                         placeholder="Ingrese el aula de la materia"
+                        data-testid="aula-materia-input" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.aula && (
@@ -324,6 +353,7 @@ function FormSubject({ formTitle,  initialValues = null }) {
                         {...field}
                         className="border-2 border-gray-400 rounded-lg h-10"
                         placeholder="Ingrese los prerrequisitos de la materia"
+                        data-testid="prerrequisitos-materia-input" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.prerrequisitos && (
@@ -335,22 +365,20 @@ function FormSubject({ formTitle,  initialValues = null }) {
                 )}
               />
 
-
               {/* Input para los cupos de la materia */}
               <FormField
                 name="cupos"
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="block">
-                      Cupos:
-                    </FormLabel>
+                    <FormLabel className="block">Cupos:</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         {...field}
                         className="border-2 border-gray-400 rounded-lg h-10"
                         placeholder="Ingrese los cupos de la materia"
+                        data-testid="cupos-materia-input" // Data-testid agregado
                       />
                     </FormControl>
                     {form.formState.errors?.cupos && (
@@ -364,8 +392,13 @@ function FormSubject({ formTitle,  initialValues = null }) {
             </CardContent>
           </Card>
 
-          <Button className="w-full h-10 text-lg font-bold m-2 self-center">
-              {initialValues ? 'Editar Materia' : "Agregar Materia"}
+          <Button
+            className="w-full h-10 text-lg font-bold m-2 self-center"
+            data-testid="submit-button"
+          >
+            {" "}
+            {/* Data-testid agregado */}
+            {initialValues ? "Editar Materia" : "Agregar Materia"}
           </Button>
         </form>
       </Form>

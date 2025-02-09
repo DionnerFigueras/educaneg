@@ -9,6 +9,7 @@ function Registro() {
     <form
       action={() => router.push('/administrator')}
       className="bg-white w-1/3 rounded-lg shadow-md p-8 flex flex-col gap-4 mx-auto mt-20 justify-center"
+      data-testid="formulario-registro"
     >
       <h1 className="font-bold text-3xl text-center">Registro</h1>
 
@@ -48,6 +49,7 @@ function Registro() {
       <button
         type="submit"
         className="bg-black text-white w-10/12 self-center py-2 font-bold text-2xl rounded-sm hover:bg-gray-800 duration-500"
+        id="submit-buton"
       >
         Registrarse
       </button>

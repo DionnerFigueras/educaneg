@@ -6,7 +6,7 @@ import React from 'react'
 Botón genérico que permite la navegación entre rutas,tiene estilos que cambian según el modo (dark o light o vacio en su defecto)
 */
 
-function Button({mode ,textButton, route}) {
+function Button({mode ,textButton, route, testid}) {
 const router = useRouter();
 
   return (
@@ -15,6 +15,7 @@ const router = useRouter();
       mode === 'dark' ? 'bg-black text-white' : 'bg-white text-black'
     }`}
     onClick={() => router.push(route)}
+    data-testid={testid}
   >
     {textButton}
   </button>

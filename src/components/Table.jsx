@@ -8,7 +8,7 @@ import DataTable from "react-data-table-component";
 Tabla para mostrar el listado de elementos (profesores, alumnos, materias, etc) recube las columnas, los datos, los estilos de la tabla, el placeholder y la funcion para filtrar la busqueda por promps. el promp route es para el boton de agregar
 */
 
-function Table({ columns, data, customStyles, buttontext, placeholder, filterFunction, route }) {
+function Table({ columns, data, customStyles, buttontext, placeholder, filterFunction, route}) {
   const [isClient, setIsClient] = useState();
   const [records, setRecords] = useState(data);
   const router = useRouter();
@@ -40,6 +40,7 @@ function Table({ columns, data, customStyles, buttontext, placeholder, filterFun
         <button 
           className="mt-2 md:mt-0 p-2 h-10 bg-black text-white text-lg font-bold rounded-lg flex items-center justify-center shadow-gray-300 shadow-lg" 
           onClick={() => {router.push(route)}}
+          data-testid="add-button"
         >
           <FontAwesomeIcon icon={faPlus} className="pr-2" />
           <p>{buttontext}</p>

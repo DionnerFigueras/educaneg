@@ -34,6 +34,7 @@ export default function Administrator() {
           subtitle="registrados"
           number={42}
           route={"/administrator/professors"}
+          id={"professors"}
         />
 
         <Card
@@ -41,6 +42,7 @@ export default function Administrator() {
           subtitle="matriculados"
           number={1246}
           route={"/administrator/estudents"}
+          id={"estudents"}
         />
 
         <Card
@@ -48,6 +50,7 @@ export default function Administrator() {
           subtitle="ofertadas"
           number={60}
           route={"/administrator/subjects"}
+          id={"subjects"}
         />
       </div>
     </div>

@@ -39,12 +39,13 @@ export default function Home() {
 
       <button
         type="submit"
+        id="submit-buton"
         className="bg-black text-white w-10/12 self-center py-2 font-bold text-2xl rounded-sm hover:bg-gray-800 duration-500"
       >
         Login
       </button>
       <a href="#" className="text-center font-semibold">Olvido su contraseña?</a>
-      <a href="#" className="text-center font-semibold" onClick={() => router.push('/registro')} >Registrate</a>
+      <a href="#" className="text-center font-semibold" onClick={() => router.push('/registro')} id="registro">Registrate</a>
     </form>
   );
 }

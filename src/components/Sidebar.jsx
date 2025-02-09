@@ -78,7 +78,7 @@ const Sidebar = ({ role, items }) => {
         </nav>
 
         {/* Botond de salir */}        
-        <button className="absolute bottom-0 w-full p-4 cursor-pointer flex items-center" onClick={() => {router.push('/')}}>
+        <button className="absolute bottom-0 w-full p-4 cursor-pointer flex items-center" onClick={() => {router.push('/')}} data-testid="salir">
           <FontAwesomeIcon icon={faPowerOff} className="w-5 h-5"/>
           <span
             className={`ml-4 font-bold text-lg md:block ${isOpen ? "block" : "hidden"}`}>

@@ -2,13 +2,13 @@
 import { faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+
 
 /* 
 Tarjeta que presenta información relevante sobre un elemento específico, incluyendo un título, un subtítulo y un número destacado. Incluye un botón de compartir que ppermite navegar a una ruta diferente al hacer clic.
 */
 
-function Card({ title, subtitle, number, route }) {
+function Card({ title, subtitle, number, route, id }) {
   const router = useRouter();
 
   const handleNavigation = () => {
@@ -25,7 +25,7 @@ function Card({ title, subtitle, number, route }) {
           <div className="flex justify-between items-center pt-8 ">
             <p className='text-4xl font-bold'>{number}</p>
 
-            <button onClick={handleNavigation}>
+            <button onClick={handleNavigation} id={id}>
               <FontAwesomeIcon icon={faShare} className="w-7 h-7" />
             </button>
 

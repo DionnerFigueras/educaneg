@@ -44,6 +44,7 @@ function Subjects() {
             onClick={() => {
               router.push("/administrator/subjects/view");
             }}
+            data-testid={`ver-${row.id}`}
           />
           <FontAwesomeIcon
             icon={faEdit}
@@ -66,37 +67,43 @@ function Subjects() {
   /* Columnas de la tabla */
   const data = [
     {
+      id: "materia-1",
       codigo: "MAT101",
       nombre: "Cálculo I",
       creditos: 4,
     },
     {
+      id: "materia-2",
       codigo: "FIS102",
       nombre: "Física General I",
       creditos: 3,
     },
     {
+      id: "materia-3",
       codigo: "QUI103",
       nombre: "Química General",
       creditos: 3,
     },
     {
+      id: "materia-4",
       codigo: "HIS201",
       nombre: "Historia Universal",
       creditos: 3,
     },
     {
+      id: "materia-5",
       codigo: "LIT202",
       nombre: "Literatura Española",
       creditos: 3,
     },
     {
+      id: "materia-6",
       codigo: "PRO301",
-
       nombre: "Programación I",
       creditos: 4,
     },
     {
+      id: "materia-7",
       codigo: "ING302",
       nombre: "Inglés Técnico",
       creditos: 2,
@@ -161,7 +168,7 @@ function Subjects() {
   return (
     <div className="flex">
       <Sidebar role={"Administrador"} items={items} />
-      <div className="w-full m-8">
+      <div className="w-full m-8" data-testid="tabla-materias">
         <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center md:text-left">Listado de Materias</h1>
         <Table
           columns={columns}
